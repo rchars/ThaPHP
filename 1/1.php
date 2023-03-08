@@ -53,26 +53,19 @@
 				return $date;
 			}
 			function calc_square() {
-				echo <<< END
-					<form action="" method="POST">
-						len:<input type="number" name="calc_square"/>
-						<input type="submit" name="calc_square"/>
-					</form>
-				END;
-				echo "<pre>";
-				print_r($_POST);
-				echo "</pre>";
-				if(isset($_POST['calc_square'])) {
-					$int_square = (int)$_POST['calc_square'];
-					echo $int_square;
-					return "Square area: $int_square";
-				}
+				$a = (float)readline("A: ");
+				return $a * $a;
 			}
 			function calc_rectangle() {
-				
+				$a = (float)readline("A: ");
+				$b = (float)readline("B: ");
+				return $a * $b;
 			}
 			function calc_trapezium() {
-				
+				$a = (float)readline("A: ");
+				$b = (float)readline("B: ");
+				$h = (float)readline("H: ");
+				return ($a + $b) * $h / 2;
 			}
 			$x = simulate_throw();
 			echo "<p>Zad 1.1: $x</p>";
@@ -87,7 +80,6 @@
 			$new_pesel_str = "11260911111";
 			$x = pesel_date($old_pesel_str);
 			$y = pesel_date($new_pesel_str);
-			// no i chollera nie mogę tego policzyć
 			echo <<< END
 				<p>
 					Zad 1.4:</br>
@@ -97,36 +89,22 @@
 					new DATE: $y</br>
 				</p>
 			END;
-			
-			echo <<< END
-				<p>
-					Zad 1.5:</br>
-					<form action="" method="POST">
-						<label for="shapes">Choose a shape:</label>
-						<select name="shapes">
-							<option value="rectangle">rectangle</option>
-							<option value="trapezium">trapezium</option>
-							<option value="square">square</option>
-						</select>
-						<input type="submit"/>
-					</form>
-				</p>
-			END;
-			if(isset($_POST['shapes'])) {
-				$result_str = "";
-				switch($_POST['shapes']) {
-					case 'rectangle':
-						$result_str = calc_rectangle();
-						break;
-					case 'trapezium':
-						$result_str = calc_trapezium();
-						break;
-					case 'square':
-						$result_str = calc_square();
-						break;
-				}
-				echo $result_str;
+			echo '\n';	
+			echo "Zad 1.5 (CLI ONLY):";
+			$select_shape = readline("Shape:");
+			$result = null;
+			switch($select_shape) {
+				case "square":
+					$result = calc_square();
+					break;
+				case "rectangle":
+					$result = calc_rectangle();
+					break;
+				case "trapezium":
+					$result = calc_trapezium();
+					break;
 			}
+			echo "Result $result";
 		?>
 	</body>
 </html>

@@ -21,7 +21,7 @@
 			function z2($country) {
 				$yes = array(
 					"Poland" => "Pole",
-					"Czechia" =>  "Czech",
+					"Czechia" => "Czech",
 					"Germany" => "German",
 					"Ukraine" => "Ukrainian"
 				);
